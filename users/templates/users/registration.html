@@ -1,0 +1,37 @@
+{% extends 'users/base.html' %}
+
+{% block main %}
+     <form action="{% url 'usersSpace:registration' %}" method="POST" class="formReg">
+         {% csrf_token %}
+         <div class="leftRegForm">
+             <div>
+                 <label for="first_name">Имя</label>
+                 <div>{{ form.first_name }}</div>
+             </div>
+             <div>
+                 <label for="last_name">Фамилия</label>
+                 <div>{{ form.last_name }}</div>
+             </div>
+             <div>
+                 <label for="username">Логин</label>
+                 <div>{{ form.username }}</div>
+             </div>
+         </div>
+         <div class="rightRegForm">
+             <div>
+                 <label for="email">Почта</label>
+                 <div>{{ form.email }}</div>
+             </div>
+             <div>
+                 <label for="password1">Пароль</label>
+                 <div>{{ form.password1 }}</div>
+             </div>
+             <div>
+                 <label for="password2">Подтверждение пароля</label>
+                 <div>{{ form.password2 }}</div>
+                 <button type="submit" class="regButtonPress">Зарегистрироваться</button>
+             </div>
+         </div>
+         {{ error }}
+     </form>
+{% endblock main %}

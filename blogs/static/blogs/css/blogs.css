@@ -1,0 +1,148 @@
+* {
+    margin:0 auto;
+    padding: 0 auto;
+    font-family:sans-serif;
+}
+body {
+    padding-left:150px;
+    padding-right:150px;
+    padding-top:10px;
+    background:#F6F2F2;
+}
+a{
+    text-decoration:none;
+    color:black;
+    font-weight:600;
+}
+.header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "BlogLogo ProfileNavigation";
+    background:#F24E4E;
+}
+.BlogTodayLogo {grid-area:BlogLogo}
+.ProfileNavigation {
+    grid-area:ProfileNavigation;
+    display:grid;
+    width:100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "ProfileAlert ProfileOpen";
+}
+.ProfileAlert{
+    grid-area:ProfileAlert;
+    text-align:center;
+    margin: auto 0;
+}
+.ProfileOpen{
+    grid-area:ProfileOpen;
+    text-align:center;
+    margin: auto 0;
+}
+.ProfileOpen a{
+    text-decoration:none;
+    margin-left:25px;
+}
+.MainContent {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas:
+    'AsideBlock ContentBlock'
+}
+.AsideBlock {
+    grid-area:AsideBlock;
+    text-align:left;
+    width:100%;
+    background:#B56CBD;
+}
+.AsideBlock div {
+    margin:25px;
+    width:100%;
+
+}
+.ContentBlock{
+    grid-area:ContentBlock;
+    width:100%;
+    text-align:center;
+    margin: auto auto;
+}
+
+.imgProfileBlock {
+    margin: auto 0;
+    text-align:center;
+
+}
+.ImgProfile {
+    width:50px;
+    height:50px;
+    border-radius:20px;
+}
+h1 a {
+    text-decoration:none;
+    color:black;
+}
+.formReg {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-areas:
+    'leftRegForm rightRegForm';
+    height:100%;
+}
+
+.regButton {
+
+}
+.leftRegForm {
+    grid-area:leftRegForm;
+    height:100%;
+}
+.rightRegForm {
+    grid-area:rightRegForm;
+}
+
+.formReg div div div {
+    margin:20px;
+}
+.profileBlock {
+    margin:20px auto;
+}
+.RegAInBlogCreate {
+    background: #fff;
+}
+.RegAInBlogCreate a {
+    background: #fff;
+    text-decoration:none;
+    color:#99f;
+}
+
+.MainPageBlog {
+    padding:10px 0;
+    background-color:white;
+    padding:25px;
+    margin:10px;
+    border: 1px solid grey;
+}
+.aCatInBlogsPage {
+    margin:5px;
+}
+.FilterNavigation {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "pagesFilter categoriesFilter";
+}
+.categoriesFilter {
+    grid-area:'categoriesFilter';
+}
+.pagesFilter {
+    grid-area:'pagesFilter';
+}
+.blogContent {
+    text-align:left;
+    padding-left:15px;
+    padding-top:15px;
+}
+.blogContent * {
+    margin:10px;
+}

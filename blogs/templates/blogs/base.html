@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'blogs/css/blogs.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div><h1 class="BlogTodayLogo"><a href="{% url 'MainPage:manpage' %}" class="aHeader">BlogToday</a></h1></div>
+        <div class="ProfileNavigation">
+            <div class="ProfileAlert">{% if user.id %}<a href="{% url 'usersSpace:myblogs' %}">Мои блоги</a>{% endif %}</div>
+            <div class="ProfileOpen">
+                {% if not user.id %}
+                    <div>
+                        <a href="{% url 'usersSpace:registration' %}">Зарегистрироваться</a>
+                        <a href="{% url 'usersSpace:login' %}">Войти</a>
+                    </div>
+                {% else %}
+                    <a href="{% url 'usersSpace:mainpage' %}">Профиль</a>
+                    <a href="{% url 'usersSpace:logout' %}">Выйти</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <main class="MainContent">
+        <aside class="AsideBlock">
+            <div><a href="{% url 'blogsSpace:mainpage' %}">Блоги сегодняшнего дня</a></div>
+            <div><a href="{% url 'blogsSpace:createBlog' %}">Написать блок</a></div>
+            <div><a href="{% url 'feedbackSpace:form' %}">Связаться с нами</a></div>
+        </aside>
+        <div class="ContentBlock">
+            {% block main %}
+                {{ blog }}
+            {% endblock main %}
+        </div>
+    </main>
+</body>
+</html>

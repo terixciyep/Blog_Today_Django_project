@@ -1,0 +1,17 @@
+{% extends 'MainPage/base.html' %}
+
+{% block main %}
+    <h3>
+        На нашем сайте вы найдете статьи на разные темы: {% for category in categories %}{{ category.name }}{% if categories.last == category %}.{% else %}, {% endif %}{% endfor %}<br>
+        А так же сможете их обсуждать с другими пользователями!
+    </h3>
+    {% for blog in a %}
+        <div class="MainPageBlog">
+            <div class="divMarginA">
+                <h3>{{ blog.title }}</h3>
+                <p>{{ blog.description }}</p><h5>{{ blog.category }}</h5>
+            </div>
+            <a href="{% url 'blogsSpace:idpage' blog.id %}">Читать далее</a>
+        </div>
+    {% endfor %}
+{% endblock main %}

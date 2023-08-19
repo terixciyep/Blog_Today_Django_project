@@ -1,0 +1,32 @@
+{% extends 'blogs/base.html' %}
+
+{% block main %}
+    <div class="blogContent">
+        <h3>{{ blog.title }}</h3>
+        <p>{{ blog.date_posted }}</p>
+        <p>{% if blog.author.image %}<img class="ImgProfile" src="{{ blog.author.image.url }}" alt="icon">{% endif %}{{ blog.author.username }}</p>
+        <div>{{ blog.description }}<br>{{ blog.content }}</div>
+    </div>
+    {% for comment in comments %}
+    <div>
+        {% if comment.comment_author.image %}<img src="{{ comment.comment_author.image.url }}" style="width:25px"> {{ comment.comment_author }} {% endif %}
+        <div>{{ comment.text }}</div>
+        {% if comment.comment_author == request.user %}
+            <a href="{% url 'blogsSpace:deleteComment' comment_id=comment.id blog_id=blog.id %}">Удалить комментарий</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% if request.user.id %}
+        <div>
+            <div>Оставить комментарий</div>
+            <form action="{% url 'blogsSpace:idpage' blog_id=blog.id %}" method="post">
+                {% csrf_token %}
+                {{ form.text }}
+                {{ form.comment_author }}
+                {{ form.blod_id }}
+                <button type="submit">Коммментарий</button>
+            </form>
+        </div>
+    {% endif %}
+    {{ error }}
+{% endblock main %}

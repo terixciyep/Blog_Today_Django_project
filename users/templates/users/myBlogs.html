@@ -1,0 +1,11 @@
+{% extends 'users/base.html' %}
+
+{% block main %}
+    {% if blogs %}
+        {% for blog in blogs %}
+          <div>{{ blog.title}} <a href="{% url 'blogsSpace:idpage' blog_id=blog.id %}">Читать блог</a></div>
+        {% endfor %}
+    {% else %}
+        <div><p>У вас отсутствуют блоги</p><a href="{% url 'blogsSpace:createBlog' %}">Напишите свой блог</a></div>
+    {% endif %}
+{% endblock main %}

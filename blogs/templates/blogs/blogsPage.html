@@ -1,0 +1,28 @@
+{% extends 'blogs/base.html' %}
+
+{% block main %}
+        <div class="FilterNavigation">
+            <div class="pagesFilter">
+                {% if blogs.paginator.count > 1 %}
+                    <h3>Страницы:</h3>
+                    {% for page in blogs.paginator.page_range %}
+                        <a href="?page={{ page }}">{{ page }}</a>
+                    {% endfor %}
+                {% else %}
+                    <h3>Единственная страница</h3>
+                {% endif %}
+            </div>
+            <div class="categoriesFilter">
+                <h3>Выберите категорию:</h3>
+                {% for cat in categories %}
+                    <a href="{% url 'blogsSpace:categoryList' pk=cat.id %}" class="aCatInBlogsPage">{{ cat.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        {% for blog in blogs %}
+            <div class="MainPageBlog">
+                <h4>{{ blog.title }}</h4>
+                <p>{{ blog.description }}.. <a href="{% url 'blogsSpace:idpage' blog.id %}">Читать далее</a></p>
+            </div>
+        {% endfor %}
+{% endblock main %}

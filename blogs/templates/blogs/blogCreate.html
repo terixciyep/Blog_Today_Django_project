@@ -1,0 +1,41 @@
+{% extends 'blogs/base.html' %}
+
+{% block main %}
+    {% if user %}
+     <form action="{% url 'blogsSpace:createBlog' %}" method="POST" class="formReg">
+         {% csrf_token %}
+         <div class="leftRegForm">
+             <div>
+                 <label for="title">Название статьи</label>
+                 <div>{{ form.title }}</div>
+             </div>
+             <div>
+                 <label for="description">Описание статьи</label>
+                 <div>{{ form.description }}</div>
+             </div>
+             <div>
+                 <label for="content">Основной контент</label>
+                 <div>{{ form.content }}</div>
+             </div>
+         </div>
+         <div class="rightRegForm">
+             <div class="DateInput">
+                 <div>{{ form.date_posted }}</div>
+             </div>
+             <div>
+                 <label for="category">Категория</label>
+                 <div>{{ form.category }}</div>
+             </div>
+             <div class="AuthorInput">
+                 <div>{{ form.author }}</div>
+             </div>
+             <button type="submit">Зарегистрироваться</button>
+         </div>
+     </form>
+    {{ error }}
+    {% else %}
+        <div class="RegAInBlogCreate"><a href="{% url 'usersSpace:registration' %}">Сначала зарегистрируйтесь</a>
+        <br>
+         или <a href="{% url 'usersSpace:login' %}">зайдите в профиль</a></div>
+    {% endif %}
+{% endblock main %}

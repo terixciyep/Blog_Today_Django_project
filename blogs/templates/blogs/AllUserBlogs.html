@@ -1,0 +1,7 @@
+{% extends 'blogs/base.html' %}
+
+{% block main %}
+    {% for blog in blogs %}
+        <div>{{ blog }} {{ blog.date_posted }}</div>
+    {% endfor %}
+{% endblock main %}

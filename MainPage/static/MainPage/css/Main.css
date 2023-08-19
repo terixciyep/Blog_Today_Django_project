@@ -1,0 +1,88 @@
+* {
+    margin:0 auto;
+    padding: 0 auto;
+    font-family:sans-serif;
+}
+body {
+    padding-left:150px;
+    padding-right:150px;
+    padding-top:10px;
+    background:#F6F2F2;
+}
+a   {
+    text-decoration:none;
+    color:black;
+    font-weight:600;
+}
+.header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "BlogLogo ProfileNavigation";
+    background:#F24E4E;
+}
+
+.BlogTodayLogo {grid-area:BlogLogo}
+.ProfileNavigation {
+    grid-area:ProfileNavigation;
+    display:grid;
+    width:100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "ProfileAlert ProfileOpen";
+}
+.ProfileAlert{
+    grid-area:ProfileAlert;
+    text-align:center;
+    margin: auto 0;
+}
+.ProfileOpen{
+    grid-area:ProfileOpen;
+    text-align:center;
+    margin: auto 0;
+}
+.MainContent {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas:
+    'AsideBlock ContentBlock';
+}
+.AsideBlock {
+    grid-area:AsideBlock;
+    text-align:left;
+    width:100%;
+    background:#B56CBD;
+}
+.AsideBlock div {
+    margin:25px;
+    width:100%;
+}
+.ContentBlock{
+    grid-area:ContentBlock;
+    margin-top:20px;
+    width:100%;
+}
+.ContentBlock * {
+    padding-left:25px;
+}
+h1 a {
+    text-decoration:none;
+    color:black;
+}
+.ProfileOpen a{
+    text-decoration:none;
+    margin-left:25px;
+}
+.MainPageBlog {
+    padding:10px 0;
+    background-color:white;
+    padding:25px;
+    margin:10px;
+    border: 1px solid grey;
+}
+.MainPageBlog a {
+    margin:50px;
+}
+.divMarginA {
+    margin-bottom:25px;
+}
