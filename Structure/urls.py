@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from blogs.views import BlogsAPIView
+from users.views import UsersViewSet
 
 urlpatterns = [
     path('admin', admin.site.urls),
@@ -25,7 +25,7 @@ urlpatterns = [
     path('profile', include('users.urls', namespace='usersSpace')),
     path('blogs', include('blogs.urls', namespace='blogsSpace')),
     path('feedback', include('feedback.urls', namespace='feedbackSpace')),
-    path('APIBlog', BlogsAPIView.as_view())
+    path('API-v1-users', UsersViewSet.as_view())
 ]
 
 

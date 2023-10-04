@@ -1,9 +1,13 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from rest_framework.permissions import IsAuthenticated
+import django_filters.rest_framework as RSfilers
 from users.forms import UserRegistrationFrom, AuthUserForm, ChangeUserForm
 from django.contrib import auth
 from blogs.models import Blog
-
+from users.models import Users
+from users.serializer import UserSerializer
+from rest_framework import generics
 
 def profile(request):
     if request.method == 'POST':
@@ -62,3 +66,10 @@ def myBlogs(request):
         'blogs':blogs
     }
     return render(request, 'users/myBlogs.html', context)
+
+class UsersViewSet(generics.ListCreateAPIView):
+    queryset = Users.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
+    filter_backends = [RSfilers.DjangoFilterBackend]
+    filterset_fields = ['id', 'username', 'email', 'password','is_staff']

@@ -3,7 +3,6 @@ import datetime
 from rest_framework.test import APITestCase
 from django.urls import reverse
 from blogs.models import Blog, Category
-from blogs.serializer import BlogSerializer
 from datetime import date
 from users.models import Users
 

@@ -1,10 +1,11 @@
 import datetime
+
+import django_filters
 from django.shortcuts import render, HttpResponseRedirect
 from blogs.models import Blog, Comment, Category
 from django.urls import reverse
 from blogs.forms import BlogCreateForm, CommentForm
 from rest_framework.generics import ListCreateAPIView
-from blogs.serializer import BlogSerializer
 from django.core.paginator import Paginator
 
 
@@ -94,7 +95,3 @@ def allBlogsForUserPage(request):
         'blogs':BlogForUser
     }
     return render(request, 'blogs/AllUserBlogs.html', context)
-
-class BlogsAPIView(ListCreateAPIView):
-    queryset = Blog.objects.all()
-    serializer_class = BlogSerializer
